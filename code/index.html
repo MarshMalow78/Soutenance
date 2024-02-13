@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Harry Potter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Site Harry Potter</h1>
+        <div id="burger-menu">
+            <span></span>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="index.html">Acceuil</a></li>
+                <li><a href="booster.html">Booster</a></li>
+                <li><a href="profil.html">Profil</a></li>
+            </ul>
+            <div class="nav_btn">
+                <i class="uil uil-moon change-theme" id="theme-button"></i>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Bouton de filtre -->
+    <div class="filter-btn" onclick="toggleFilterModal()">Filtrer par Maison</div>
+
+<!-- Modal de filtre -->
+    <div id="filter-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleFilterModal()">&times;</span>
+            <h2>Filtrer par Maison</h2>
+            <label for="house-choice">Choisissez une maison :</label>
+            <select id="house-choice">
+                <option value="all">Toutes les maisons</option>
+                <option value="gryffindor">Gryffondor</option>
+                <option value="hufflepuff">Poufsouffle</option>
+                <option value="ravenclaw">Serdaigle</option>
+                <option value="slytherin">Serpentard</option>
+            </select>
+            <button onclick="applyHouseFilter()">Appliquer le filtre</button>
+        </div>
+    </div>
+
+        <div id="card-container">
+        <!-- Ajoutez vos cartes ici -->
+        <div class="card gryffindor">
+            <h3>Harry Potter</h3>
+            <img src="image/Harry_Potter.jpg" alt="Photo de la carte">
+            <p>Maison: Gryffondor</p>
+            <button class="favorite-btn" onclick="toggleFavorite(this)"></button>
+        </div>
+        <div class="card hufflepuff">
+            <h3>Cedric Diggory</h3>
+            <img src="image/cedric_diggory.jpg" alt="Photo de la carte">
+            <p>Maison: Poufsouffle</p>
+            <button class="favorite-btn" onclick="toggleFavorite(this)"></button>
+        </div>
+        <div class="card ravenclaw">
+            <h3>Luna Lovegood</h3>
+            <img src="image/luna_lovegood.jpg" alt="Photo de la carte">
+            <p>Maison: Serdaigle</p>
+            <button class="favorite-btn" onclick="toggleFavorite(this)"></button>
+        </div>
+        <div class="card slytherin">
+            <h3>Severus Snape</h3>
+            <img src="image/severus_snape.jpg" alt="Photo de la carte">
+            <p>Maison: Serpentard</p>
+            <button class="favorite-btn" onclick="toggleFavorite(this)"></button>
+        </div>
+        <div class="card gryffindor">
+            <h3>Hermione Granger</h3>
+            <img src="image/hermione_granger.jpg" alt="Photo de la carte">
+            <p>Maison: Gryffondor</p>
+            <button class="favorite-btn" onclick="toggleFavorite(this)"></button>
+        </div>
+        <div class="card slytherin">
+            <h3>Draco Malfoy</h3>
+            <img src="image/draco_malfoy.jpg" alt="Photo de la carte">
+            <p>Maison: Serpentard</p>
+            <button class="favorite-btn" onclick="toggleFavorite(this)"></button>
+        </div>
+    </div>
+    <div class="floating-button" onclick="toggleModal()">Échanger des cartes</div>
+
+    <div id="exchange-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleModal()">&times;</span>
+            <h2>Échanger des cartes</h2>
+            <label for="person-choice">Choix de la personne :</label>
+            <select id="person-choice">
+                <option value="person1">Personne 1</option>
+                <option value="person2">Personne 2</option>
+                <!-- Ajoutez d'autres options au besoin -->
+            </select>
+            <label for="card-choice">Choix de la carte :</label>
+            <select id="card-choice">
+                <!-- Liste des cartes disponibles -->
+                <option value="card1">Carte 1</option>
+                <option value="card2">Carte 2</option>
+                <!-- Ajoutez d'autres options au besoin -->
+            </select>
+            <button onclick="performExchange()">Échanger</button>
+        </div>
+    </div>
+    </main>
+    <script src="Js/burger.js"></script>
+    <script src="Js/main.js"></script>
+</body>
+</html>

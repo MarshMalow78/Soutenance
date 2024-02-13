@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Harry Potter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <section>
+            <h1>Site Harry Potter</h1>
+            <div id="burger-menu">
+                <span></span>
+            </div>
+            <div id="menu">
+                <ul>
+                    <li><a href="index.html">Acceuil</a></li>
+                    <li><a href="booster.html">Booster</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                </ul>
+                <div class="nav_btn">
+                    <i class="uil uil-moon change-theme" id="theme-button"></i>
+                </div>
+            </div>
+        </section>
+    </header>
+    <main>
+        <section id="profile">
+            <h2>Mon Profil</h2>
+            <form action="#" method="post" id="profile-form">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="username">Pseudo:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="username" name="username" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="dob">Date de naissance:</label>
+                        </td>
+                        <td>
+                            <input type="date" id="dob" name="dob" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="house">Maison à Poudlard:</label>
+                        </td>
+                        <td>
+                            <select id="house" name="house">
+                                <option value="gryffindor">Gryffondor</option>
+                                <option value="hufflepuff">Poufsouffle</option>
+                                <option value="ravenclaw">Serdaigle</option>
+                                <option value="slytherin">Serpentard</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="country">Pays de Résidence:</label>
+                        </td>
+                        <td>
+                            <select id="country" name="country">
+                                <option value="france">France</option>
+                                <option value="united-kingdom">United Kingdom</option>
+                                <option value="united-states">United States</option>
+                                <!-- Ajoutez d'autres options selon vos besoins -->
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="profile-pic">Photo de Profil:</label>
+                        </td>
+                        <td>
+                            <input type="file" id="profile-pic" name="profile-pic">
+                        </td>
+                    </tr>
+                </table>
+
+                <div id="additional-info">
+                    <label for="description">Description:</label>
+                    <textarea class="description" id="description" name="description"></textarea>
+
+                    <h3>Cartes Favorites</h3>
+                    <span class="favorite-card"></span>
+                    <span class="favorite-card"></span>
+                    <span class="favorite-card"></span>
+                    <span class="favorite-card"></span>
+                    <span class="favorite-card"></span>
+                </div>
+
+                <button type="submit">Enregistrer</button>
+            </form>
+        </section>
+    </main>
+    <script src="Js/burger.js"></script>
+    <script src="Js/contact.js"></script>
+</body>
+</html>

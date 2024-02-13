@@ -1,0 +1,524 @@
+body {
+    overflow-x: hidden; /* Empêche le défilement horizontal lors de l'ouverture du menu */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ccc; /* Fond gris */
+}
+
+
+
+/*Header*/
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+}
+h1{
+    padding-left: 45%;
+}
+#burger-menu {
+	cursor: pointer;
+	height: 27px;
+	width: 27px;
+	overflow: visible;
+	position: relative;
+	z-index: 2;
+
+	span,
+	span:before,
+	span:after {
+		background: #ffffff;
+		display: block;
+		height: 2px;
+		opacity: 1;
+		position: absolute;
+		transition: 0.3s ease-in-out;
+	}
+
+	span:before,
+	span:after {
+		content: '';
+	}
+
+	span:before {
+		left: 0px;
+		top: -10px;
+		width: 27px;
+	}
+
+	span {
+		right: 0px;
+		top: 13px;
+		width: 27px;
+	}
+
+	span:after {
+		left: 0px;
+		top: 10px;
+		width: 27px;
+	}
+
+	&.close {
+		span:before {
+			top: 0px;
+			transform: rotate(90deg);
+			width: 27px;
+		}
+
+		span {
+			transform: rotate(-45deg);
+			top: 13px;
+			width: 27px;
+		}
+
+		span:after {
+			top: 0px;
+			left: 0;
+			transform: rotate(90deg);
+			opacity: 0;
+			width: 0;
+		}
+	}
+}
+
+#menu {
+	z-index: 1;
+	min-width: 100%;
+	min-height: 100%;
+	position: fixed;
+	top: 0;
+	height: 0;
+	visibility: hidden;
+	opacity: 0;
+	text-align: center;
+	padding-top: 20px;
+	transition: all 0.3s ease-in-out;
+
+	&.overlay {
+		visibility: visible;
+		opacity: 1;
+		padding-top: 100px;
+		background: rgba(0, 0, 0, 0.5);
+	}
+
+	ul {
+		padding: 0;
+	}
+
+	li {
+		list-style: none;
+	}
+
+	a {
+		color: white;
+		display: block;
+		font-size: 32px;
+		margin-bottom: 30px;
+		text-decoration: none;
+	}
+}
+
+/*Main*/
+
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    background-color: white;
+    padding: 1em;
+    margin: 1em;
+    width: 10%;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden; /* Ajout de cette ligne pour cacher le contenu débordant */
+}
+
+.card img {
+    width: 100%; /* Modifié pour utiliser 100% de la largeur de la carte */
+    height: auto;
+    border-radius: 4px;
+}
+.card h3,
+.card p,
+.card button {
+    box-sizing: border-box;
+}
+
+.gryffindor {
+    background-color: rgb(204, 88, 88); /* Couleur Gryffondor */
+}
+
+.hufflepuff {
+    background-color: rgb(218, 218, 96); /* Couleur Poufsouffle */
+}
+
+.ravenclaw {
+    background-color: rgb(76, 76, 224); /* Couleur Serdaigle */
+}
+
+.slytherin {
+    background-color: rgb(32, 99, 32); /* Couleur Serpentard */
+}
+.gryffindor-bg {
+    background-color: rgb(204, 88, 88); /* Fond Gryffondor */
+}
+
+.hufflepuff-bg {
+    background-color: rgb(218, 218, 96); /* Fond Poufsouffle */
+}
+
+.ravenclaw-bg {
+    background-color: rgb(76, 76, 224); /* Fond Serdaigle */
+}
+
+.slytherin-bg {
+    background-color: rgb(32, 99, 32); /* Fond Serpentard */
+}
+ /*modal*/
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Styles de la modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1001;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+
+
+.favorite-btn {
+    background-color: transparent;
+    border: none;
+    width: 30px; /* Ajustez la taille du cœur en conséquence */
+    height: 30px; /* Ajustez la taille du cœur en conséquence */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* Ajout de cette ligne pour cacher le contenu débordant */
+    outline: none; /* Ajout de cette ligne pour supprimer la bordure de mise en surbrillance */
+    user-select: none; /* Ajout de cette ligne pour désactiver la sélection du texte */
+}
+
+.favorite-btn::before,
+.favorite-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 16px; /* Ajustez la largeur du cœur en conséquence */
+    height: 26px; /* Ajustez la hauteur du cœur en conséquence */
+    border-radius: 50%;
+    background-color: #ddd; /* Couleur de fond initiale (gris clair) */
+}
+
+.favorite-btn::before {
+    left: 10px; /* Ajustez la position en conséquence pour dessiner la moitié gauche du cœur */
+    transform: rotate(45deg);
+}
+
+.favorite-btn::after {
+    left: 0; /* Ajustez la position en conséquence pour dessiner la moitié droite du cœur */
+    transform: rotate(-45deg);
+}
+
+.favorite-btn.favori::before,
+.favorite-btn.favori::after {
+    background-color: #8a2be2; /* Couleur de fond pour les favoris (violet) */
+}
+
+
+
+
+/*shop*/
+
+#shop {
+    text-align: center;
+    padding: 20px;
+}
+
+.pack {
+    display: inline-block;
+    margin: 20px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pack img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.pack button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Styles de survol du bouton */
+.pack button:hover {
+    background-color: #45a049;
+}
+
+
+
+/*profil*/
+#profile {
+    text-align: center;
+    padding: 20px;
+}
+
+#profile-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+#basic-info,
+#profile-pic-container {
+    flex-basis: 45%; /* Ajustez la largeur des deux sections selon vos besoins */
+}
+
+form label,
+form input,
+form select {
+    margin: 10px;
+    width: 100%;
+}
+.style-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.description {
+    height: 150px;
+    width: 75%;
+}
+#profile-pic-container {
+    text-align: left;
+}
+
+#profile-pic {
+    width: 100%;
+    margin-top: 5px;
+}
+.favorite-card {
+    background-color: white;
+    padding: 1em;
+    margin: 1em;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 200px; /* Ajustez la largeur selon vos besoins */
+    text-align: center;
+}
+#favorite-cards {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0;
+}
+
+.favorite-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+
+/* Ajout de Media Queries pour rendre le site responsive */
+
+/* Écrans de taille moyenne (tablette) */
+@media only screen and (min-width: 768px) {
+    header {
+        text-align: left;
+        padding: 1em;
+    }
+
+    h1 {
+        padding-left: 0;
+    }
+
+    #burger-menu {
+        margin-top: 0;
+    }
+
+    #menu {
+        padding-top: 0;
+    }
+
+    #card-container {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .card {
+        width: 30%;
+    }
+
+    .modal-content {
+        width: 50%;
+    }
+
+    .floating-button {
+        font-size: 16px;
+        padding: 10px 20px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .pack {
+        width: 40%;
+    }
+
+    #profile-header {
+        text-align: left;
+    }
+
+    #basic-info,
+    #profile-pic-container {
+        flex-basis: 48%;
+    }
+
+    .favorite-card {
+        width: 30%;
+    }
+}
+
+/* Écrans de grande taille (bureau) */
+@media only screen and (min-width: 1024px) {
+    #card-container {
+        justify-content: space-around;
+    }
+
+    .card {
+        width: 20%;
+    }
+
+    .modal-content {
+        width: 30%;
+    }
+
+    .floating-button {
+        font-size: 18px;
+        padding: 12px 24px;
+        bottom: 30px;
+        right: 30px;
+    }
+
+    .pack {
+        width: 30%;
+    }
+
+    .favorite-card {
+        width: 20%;
+    }
+}
+@media screen and (max-width: 600px){
+    header {
+        text-align: center;
+    }
+
+    h1 {
+        padding-left: 0;
+    }
+
+    #burger-menu {
+        margin-top: 0;
+    }
+
+    #menu {
+        padding-top: 0;
+    }
+
+    .filter-btn {
+        font-size: 14px;
+    }
+
+    #filter-modal {
+        font-size: 16px;
+    }
+
+    #card-container {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 75%;
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+
+    .floating-button {
+        font-size: 14px;
+        padding: 8px 16px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .pack {
+        width: 80%;
+    }
+
+    #profile-header {
+        text-align: left;
+    }
+
+    #basic-info,
+    #profile-pic-container {
+        flex-basis: 100%;
+    }
+
+    .favorite-card {
+        width: 100%;
+    }
+}
